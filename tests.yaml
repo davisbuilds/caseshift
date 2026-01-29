@@ -1,0 +1,1001 @@
+# caseshift Test Suite
+# Version: 0.1.0
+#
+# Each test case includes:
+#   - description: Human-readable test name
+#   - input: Function arguments
+#   - expected: Expected return value
+#
+# Total: 156 test cases
+
+to_camel:
+  # Basic conversions
+  - description: "from snake_case"
+    input:
+      text: "hello_world"
+    expected: "helloWorld"
+
+  - description: "from PascalCase"
+    input:
+      text: "HelloWorld"
+    expected: "helloWorld"
+
+  - description: "from kebab-case"
+    input:
+      text: "hello-world"
+    expected: "helloWorld"
+
+  - description: "from SCREAMING_SNAKE"
+    input:
+      text: "HELLO_WORLD"
+    expected: "helloWorld"
+
+  - description: "from Title Case"
+    input:
+      text: "Hello World"
+    expected: "helloWorld"
+
+  - description: "from sentence case"
+    input:
+      text: "Hello world"
+    expected: "helloWorld"
+
+  - description: "single word lowercase"
+    input:
+      text: "hello"
+    expected: "hello"
+
+  - description: "single word uppercase"
+    input:
+      text: "HELLO"
+    expected: "hello"
+
+  - description: "already camelCase"
+    input:
+      text: "helloWorld"
+    expected: "helloWorld"
+
+  # Acronyms
+  - description: "acronym at start"
+    input:
+      text: "XMLParser"
+    expected: "xmlParser"
+
+  - description: "acronym in middle"
+    input:
+      text: "getHTTPResponse"
+    expected: "getHttpResponse"
+
+  - description: "acronym at end"
+    input:
+      text: "parseJSON"
+    expected: "parseJson"
+
+  - description: "multiple acronyms"
+    input:
+      text: "XMLToJSON"
+    expected: "xmlToJson"
+
+  - description: "screaming acronym"
+    input:
+      text: "HTTP_REQUEST"
+    expected: "httpRequest"
+
+  - description: "short acronym"
+    input:
+      text: "getID"
+    expected: "getId"
+
+  - description: "iOS style"
+    input:
+      text: "iPhone"
+    expected: "iphone"
+
+  # Numbers
+  - description: "number at end"
+    input:
+      text: "version2"
+    expected: "version2"
+
+  - description: "number in middle"
+    input:
+      text: "version2Release"
+    expected: "version2Release"
+
+  - description: "number with underscore"
+    input:
+      text: "user_id_1"
+    expected: "userId1"
+
+  - description: "v2 style"
+    input:
+      text: "v2_api"
+    expected: "v2Api"
+
+  # Edge cases
+  - description: "empty string"
+    input:
+      text: ""
+    expected: ""
+
+  - description: "single character"
+    input:
+      text: "a"
+    expected: "a"
+
+  - description: "consecutive delimiters"
+    input:
+      text: "hello__world"
+    expected: "helloWorld"
+
+  - description: "leading delimiter"
+    input:
+      text: "_hello_world"
+    expected: "helloWorld"
+
+  - description: "trailing delimiter"
+    input:
+      text: "hello_world_"
+    expected: "helloWorld"
+
+  - description: "mixed delimiters"
+    input:
+      text: "hello_world-test"
+    expected: "helloWorldTest"
+
+
+to_pascal:
+  # Basic conversions
+  - description: "from snake_case"
+    input:
+      text: "hello_world"
+    expected: "HelloWorld"
+
+  - description: "from camelCase"
+    input:
+      text: "helloWorld"
+    expected: "HelloWorld"
+
+  - description: "from kebab-case"
+    input:
+      text: "hello-world"
+    expected: "HelloWorld"
+
+  - description: "from SCREAMING_SNAKE"
+    input:
+      text: "HELLO_WORLD"
+    expected: "HelloWorld"
+
+  - description: "from Title Case"
+    input:
+      text: "Hello World"
+    expected: "HelloWorld"
+
+  - description: "single word lowercase"
+    input:
+      text: "hello"
+    expected: "Hello"
+
+  - description: "single word uppercase"
+    input:
+      text: "HELLO"
+    expected: "Hello"
+
+  - description: "already PascalCase"
+    input:
+      text: "HelloWorld"
+    expected: "HelloWorld"
+
+  # Acronyms
+  - description: "acronym at start"
+    input:
+      text: "XMLParser"
+    expected: "XmlParser"
+
+  - description: "acronym in middle"
+    input:
+      text: "getHTTPResponse"
+    expected: "GetHttpResponse"
+
+  - description: "acronym at end"
+    input:
+      text: "parseJSON"
+    expected: "ParseJson"
+
+  - description: "screaming snake acronym"
+    input:
+      text: "HTTP_REQUEST"
+    expected: "HttpRequest"
+
+  - description: "iOS style"
+    input:
+      text: "iPhone"
+    expected: "Iphone"
+
+  # Numbers
+  - description: "number in identifier"
+    input:
+      text: "user_id_1"
+    expected: "UserId1"
+
+  - description: "v2 style"
+    input:
+      text: "v2_api"
+    expected: "V2Api"
+
+  # Edge cases
+  - description: "empty string"
+    input:
+      text: ""
+    expected: ""
+
+  - description: "single character"
+    input:
+      text: "a"
+    expected: "A"
+
+
+to_snake:
+  # Basic conversions
+  - description: "from camelCase"
+    input:
+      text: "helloWorld"
+    expected: "hello_world"
+
+  - description: "from PascalCase"
+    input:
+      text: "HelloWorld"
+    expected: "hello_world"
+
+  - description: "from kebab-case"
+    input:
+      text: "hello-world"
+    expected: "hello_world"
+
+  - description: "from SCREAMING_SNAKE"
+    input:
+      text: "HELLO_WORLD"
+    expected: "hello_world"
+
+  - description: "from Title Case"
+    input:
+      text: "Hello World"
+    expected: "hello_world"
+
+  - description: "from sentence case"
+    input:
+      text: "Hello world"
+    expected: "hello_world"
+
+  - description: "single word"
+    input:
+      text: "Hello"
+    expected: "hello"
+
+  - description: "already snake_case"
+    input:
+      text: "hello_world"
+    expected: "hello_world"
+
+  # Acronyms
+  - description: "acronym at start"
+    input:
+      text: "XMLParser"
+    expected: "xml_parser"
+
+  - description: "acronym in middle"
+    input:
+      text: "getHTTPResponse"
+    expected: "get_http_response"
+
+  - description: "acronym at end"
+    input:
+      text: "parseJSON"
+    expected: "parse_json"
+
+  - description: "short acronym"
+    input:
+      text: "getID"
+    expected: "get_id"
+
+  - description: "ID at start"
+    input:
+      text: "IDNumber"
+    expected: "id_number"
+
+  - description: "multiple acronyms"
+    input:
+      text: "XMLToJSON"
+    expected: "xml_to_json"
+
+  # Numbers
+  - description: "number suffix"
+    input:
+      text: "version2"
+    expected: "version2"
+
+  - description: "number boundary"
+    input:
+      text: "version2Release"
+    expected: "version2_release"
+
+  - description: "multiple numbers"
+    input:
+      text: "test123abc456"
+    expected: "test_123_abc_456"
+
+  - description: "v2 prefix"
+    input:
+      text: "v2API"
+    expected: "v2_api"
+
+  # Edge cases
+  - description: "empty string"
+    input:
+      text: ""
+    expected: ""
+
+  - description: "consecutive uppercase"
+    input:
+      text: "ABC"
+    expected: "abc"
+
+  - description: "single letters"
+    input:
+      text: "aBcD"
+    expected: "a_b_c_d"
+
+  - description: "consecutive delimiters"
+    input:
+      text: "hello--world"
+    expected: "hello_world"
+
+  - description: "three words"
+    input:
+      text: "oneTwoThree"
+    expected: "one_two_three"
+
+  - description: "real world example"
+    input:
+      text: "backgroundColor"
+    expected: "background_color"
+
+  - description: "user model field"
+    input:
+      text: "firstName"
+    expected: "first_name"
+
+
+to_screaming:
+  # Basic conversions
+  - description: "from camelCase"
+    input:
+      text: "helloWorld"
+    expected: "HELLO_WORLD"
+
+  - description: "from PascalCase"
+    input:
+      text: "HelloWorld"
+    expected: "HELLO_WORLD"
+
+  - description: "from snake_case"
+    input:
+      text: "hello_world"
+    expected: "HELLO_WORLD"
+
+  - description: "from kebab-case"
+    input:
+      text: "hello-world"
+    expected: "HELLO_WORLD"
+
+  - description: "already SCREAMING_SNAKE"
+    input:
+      text: "HELLO_WORLD"
+    expected: "HELLO_WORLD"
+
+  - description: "single word"
+    input:
+      text: "hello"
+    expected: "HELLO"
+
+  # Acronyms
+  - description: "acronym camelCase"
+    input:
+      text: "getHTTPResponse"
+    expected: "GET_HTTP_RESPONSE"
+
+  - description: "acronym PascalCase"
+    input:
+      text: "XMLParser"
+    expected: "XML_PARSER"
+
+  # Real world
+  - description: "constant name"
+    input:
+      text: "maxRetries"
+    expected: "MAX_RETRIES"
+
+  - description: "config constant"
+    input:
+      text: "defaultTimeout"
+    expected: "DEFAULT_TIMEOUT"
+
+  # Edge cases
+  - description: "empty string"
+    input:
+      text: ""
+    expected: ""
+
+
+to_kebab:
+  # Basic conversions
+  - description: "from camelCase"
+    input:
+      text: "helloWorld"
+    expected: "hello-world"
+
+  - description: "from PascalCase"
+    input:
+      text: "HelloWorld"
+    expected: "hello-world"
+
+  - description: "from snake_case"
+    input:
+      text: "hello_world"
+    expected: "hello-world"
+
+  - description: "from SCREAMING_SNAKE"
+    input:
+      text: "HELLO_WORLD"
+    expected: "hello-world"
+
+  - description: "from Title Case"
+    input:
+      text: "Hello World"
+    expected: "hello-world"
+
+  - description: "already kebab-case"
+    input:
+      text: "hello-world"
+    expected: "hello-world"
+
+  - description: "single word"
+    input:
+      text: "Hello"
+    expected: "hello"
+
+  # Acronyms
+  - description: "acronym in middle"
+    input:
+      text: "getHTTPResponse"
+    expected: "get-http-response"
+
+  # Real world
+  - description: "CSS property"
+    input:
+      text: "backgroundColor"
+    expected: "background-color"
+
+  - description: "URL slug style"
+    input:
+      text: "myBlogPost"
+    expected: "my-blog-post"
+
+  # Edge cases
+  - description: "empty string"
+    input:
+      text: ""
+    expected: ""
+
+  - description: "numbers"
+    input:
+      text: "version2Release"
+    expected: "version2-release"
+
+
+to_train:
+  # Basic conversions
+  - description: "from camelCase"
+    input:
+      text: "helloWorld"
+    expected: "Hello-World"
+
+  - description: "from snake_case"
+    input:
+      text: "hello_world"
+    expected: "Hello-World"
+
+  - description: "from kebab-case"
+    input:
+      text: "content-type"
+    expected: "Content-Type"
+
+  - description: "from SCREAMING_SNAKE"
+    input:
+      text: "CONTENT_TYPE"
+    expected: "Content-Type"
+
+  - description: "already Train-Case"
+    input:
+      text: "Hello-World"
+    expected: "Hello-World"
+
+  # Real world
+  - description: "HTTP header"
+    input:
+      text: "x_custom_header"
+    expected: "X-Custom-Header"
+
+  - description: "accept encoding"
+    input:
+      text: "acceptEncoding"
+    expected: "Accept-Encoding"
+
+  # Acronyms
+  - description: "acronym handling"
+    input:
+      text: "getHTTPResponse"
+    expected: "Get-Http-Response"
+
+  # Edge cases
+  - description: "empty string"
+    input:
+      text: ""
+    expected: ""
+
+
+to_title:
+  # Basic conversions
+  - description: "from camelCase"
+    input:
+      text: "helloWorld"
+    expected: "Hello World"
+
+  - description: "from snake_case"
+    input:
+      text: "hello_world"
+    expected: "Hello World"
+
+  - description: "from kebab-case"
+    input:
+      text: "hello-world"
+    expected: "Hello World"
+
+  - description: "from SCREAMING_SNAKE"
+    input:
+      text: "HELLO_WORLD"
+    expected: "Hello World"
+
+  - description: "already Title Case"
+    input:
+      text: "Hello World"
+    expected: "Hello World"
+
+  - description: "single word"
+    input:
+      text: "hello"
+    expected: "Hello"
+
+  # Acronyms
+  - description: "acronym handling"
+    input:
+      text: "getHTTPResponse"
+    expected: "Get Http Response"
+
+  # Real world
+  - description: "field to label"
+    input:
+      text: "user_id"
+    expected: "User Id"
+
+  - description: "method to label"
+    input:
+      text: "firstName"
+    expected: "First Name"
+
+  # Edge cases
+  - description: "empty string"
+    input:
+      text: ""
+    expected: ""
+
+
+to_sentence:
+  # Basic conversions
+  - description: "from camelCase"
+    input:
+      text: "helloWorld"
+    expected: "Hello world"
+
+  - description: "from snake_case"
+    input:
+      text: "hello_world"
+    expected: "Hello world"
+
+  - description: "from SCREAMING_SNAKE"
+    input:
+      text: "HELLO_WORLD"
+    expected: "Hello world"
+
+  - description: "from PascalCase"
+    input:
+      text: "HelloWorld"
+    expected: "Hello world"
+
+  - description: "single word"
+    input:
+      text: "hello"
+    expected: "Hello"
+
+  # Real world
+  - description: "error message source"
+    input:
+      text: "invalidEmailAddress"
+    expected: "Invalid email address"
+
+  - description: "user profile field"
+    input:
+      text: "userProfilePage"
+    expected: "User profile page"
+
+  # Acronyms
+  - description: "acronym handling"
+    input:
+      text: "getHTTPResponse"
+    expected: "Get http response"
+
+  # Edge cases
+  - description: "empty string"
+    input:
+      text: ""
+    expected: ""
+
+
+to_flat:
+  # Basic conversions
+  - description: "from camelCase"
+    input:
+      text: "helloWorld"
+    expected: "helloworld"
+
+  - description: "from snake_case"
+    input:
+      text: "hello_world"
+    expected: "helloworld"
+
+  - description: "from PascalCase"
+    input:
+      text: "HelloWorld"
+    expected: "helloworld"
+
+  - description: "from SCREAMING_SNAKE"
+    input:
+      text: "HELLO_WORLD"
+    expected: "helloworld"
+
+  - description: "from kebab-case"
+    input:
+      text: "hello-world"
+    expected: "helloworld"
+
+  - description: "already flat"
+    input:
+      text: "helloworld"
+    expected: "helloworld"
+
+  # Edge cases
+  - description: "empty string"
+    input:
+      text: ""
+    expected: ""
+
+  - description: "with numbers"
+    input:
+      text: "test123"
+    expected: "test123"
+
+
+to_upper_flat:
+  # Basic conversions
+  - description: "from camelCase"
+    input:
+      text: "helloWorld"
+    expected: "HELLOWORLD"
+
+  - description: "from snake_case"
+    input:
+      text: "hello_world"
+    expected: "HELLOWORLD"
+
+  - description: "from PascalCase"
+    input:
+      text: "HelloWorld"
+    expected: "HELLOWORLD"
+
+  - description: "from kebab-case"
+    input:
+      text: "hello-world"
+    expected: "HELLOWORLD"
+
+  - description: "already UPPER_FLAT"
+    input:
+      text: "HELLOWORLD"
+    expected: "HELLOWORLD"
+
+  # Edge cases
+  - description: "empty string"
+    input:
+      text: ""
+    expected: ""
+
+
+detect:
+  # Positive detections
+  - description: "detects camelCase"
+    input:
+      text: "helloWorld"
+    expected: "camel"
+
+  - description: "detects camelCase three words"
+    input:
+      text: "helloWorldTest"
+    expected: "camel"
+
+  - description: "detects PascalCase"
+    input:
+      text: "HelloWorld"
+    expected: "pascal"
+
+  - description: "detects PascalCase three words"
+    input:
+      text: "HelloWorldTest"
+    expected: "pascal"
+
+  - description: "detects snake_case"
+    input:
+      text: "hello_world"
+    expected: "snake"
+
+  - description: "detects SCREAMING_SNAKE"
+    input:
+      text: "HELLO_WORLD"
+    expected: "screaming"
+
+  - description: "detects kebab-case"
+    input:
+      text: "hello-world"
+    expected: "kebab"
+
+  - description: "detects Train-Case"
+    input:
+      text: "Hello-World"
+    expected: "train"
+
+  - description: "detects Title Case"
+    input:
+      text: "Hello World"
+    expected: "title"
+
+  - description: "detects sentence case"
+    input:
+      text: "Hello world"
+    expected: "sentence"
+
+  - description: "detects flat"
+    input:
+      text: "helloworld"
+    expected: "flat"
+
+  - description: "detects upper_flat"
+    input:
+      text: "HELLOWORLD"
+    expected: "upper_flat"
+
+  # Single words
+  - description: "single lowercase is flat"
+    input:
+      text: "hello"
+    expected: "flat"
+
+  - description: "single capitalized is pascal"
+    input:
+      text: "Hello"
+    expected: "pascal"
+
+  - description: "single uppercase is upper_flat"
+    input:
+      text: "HELLO"
+    expected: "upper_flat"
+
+  # Undetectable / null cases
+  - description: "empty string"
+    input:
+      text: ""
+    expected: null
+
+  - description: "mixed snake and camel"
+    input:
+      text: "hello_World"
+    expected: null
+
+  - description: "mixed kebab and pascal"
+    input:
+      text: "Hello-world"
+    expected: null
+
+  - description: "numbers only"
+    input:
+      text: "123"
+    expected: null
+
+  - description: "inconsistent spaces"
+    input:
+      text: "hello World"
+    expected: null
+
+  - description: "mixed delimiters"
+    input:
+      text: "hello_world-test"
+    expected: null
+
+  # Edge cases with numbers
+  - description: "camel with number"
+    input:
+      text: "version2Release"
+    expected: "camel"
+
+  - description: "snake with number"
+    input:
+      text: "version_2_release"
+    expected: "snake"
+
+
+split_words:
+  # Basic splitting
+  - description: "camelCase"
+    input:
+      text: "helloWorld"
+    expected: ["hello", "world"]
+
+  - description: "PascalCase"
+    input:
+      text: "HelloWorld"
+    expected: ["hello", "world"]
+
+  - description: "snake_case"
+    input:
+      text: "hello_world"
+    expected: ["hello", "world"]
+
+  - description: "SCREAMING_SNAKE"
+    input:
+      text: "HELLO_WORLD"
+    expected: ["hello", "world"]
+
+  - description: "kebab-case"
+    input:
+      text: "hello-world"
+    expected: ["hello", "world"]
+
+  - description: "Title Case"
+    input:
+      text: "Hello World"
+    expected: ["hello", "world"]
+
+  - description: "three words camel"
+    input:
+      text: "oneTwoThree"
+    expected: ["one", "two", "three"]
+
+  # Acronyms
+  - description: "acronym at start"
+    input:
+      text: "XMLParser"
+    expected: ["xml", "parser"]
+
+  - description: "acronym in middle"
+    input:
+      text: "getHTTPResponse"
+    expected: ["get", "http", "response"]
+
+  - description: "acronym at end"
+    input:
+      text: "parseJSON"
+    expected: ["parse", "json"]
+
+  - description: "multiple acronyms"
+    input:
+      text: "XMLToJSON"
+    expected: ["xml", "to", "json"]
+
+  - description: "short acronym ID"
+    input:
+      text: "getID"
+    expected: ["get", "id"]
+
+  - description: "ID at start"
+    input:
+      text: "IDNumber"
+    expected: ["id", "number"]
+
+  - description: "iOS style"
+    input:
+      text: "iPhone"
+    expected: ["i", "phone"]
+
+  - description: "iOS"
+    input:
+      text: "iOS"
+    expected: ["i", "os"]
+
+  # Numbers
+  - description: "number at end"
+    input:
+      text: "version2"
+    expected: ["version", "2"]
+
+  - description: "number boundary"
+    input:
+      text: "version2Release"
+    expected: ["version", "2", "release"]
+
+  - description: "multiple numbers"
+    input:
+      text: "abc123def456"
+    expected: ["abc", "123", "def", "456"]
+
+  - description: "v prefix"
+    input:
+      text: "v2API"
+    expected: ["v", "2", "api"]
+
+  - description: "number only"
+    input:
+      text: "123"
+    expected: ["123"]
+
+  # Edge cases
+  - description: "empty string"
+    input:
+      text: ""
+    expected: []
+
+  - description: "single word"
+    input:
+      text: "hello"
+    expected: ["hello"]
+
+  - description: "single character"
+    input:
+      text: "a"
+    expected: ["a"]
+
+  - description: "consecutive delimiters"
+    input:
+      text: "hello__world"
+    expected: ["hello", "world"]
+
+  - description: "mixed delimiters"
+    input:
+      text: "a_b-c d"
+    expected: ["a", "b", "c", "d"]
+
+  - description: "leading delimiter"
+    input:
+      text: "_hello"
+    expected: ["hello"]
+
+  - description: "trailing delimiter"
+    input:
+      text: "hello_"
+    expected: ["hello"]
+
+  - description: "single letters camel"
+    input:
+      text: "aBcD"
+    expected: ["a", "b", "c", "d"]
+
+  - description: "all caps"
+    input:
+      text: "ABC"
+    expected: ["abc"]
