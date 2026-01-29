@@ -209,5 +209,5 @@ When contributing:
 ## See Also
 
 - [whenwords](https://github.com/dbreunig/whenwords) — The original ghost library for relative time formatting
-- [slugify](https://github.com/dbreunig/slugify) — Ghost library for URL-safe string conversion
+- [slugify](https://github.com/davisbuilds/slugify) — Ghost library for URL-safe string conversion
 - [A Software Library with No Code](https://www.dbreunig.com/2026/01/08/a-software-library-with-no-code.html) — Blog post explaining the concept
